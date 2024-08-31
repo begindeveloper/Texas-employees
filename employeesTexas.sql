@@ -1,3 +1,5 @@
+Show databases;
+
 Create Database Texasemployees;
 
 USE Texasemployees; 
@@ -9,6 +11,17 @@ FirstName varchar(200),
 City varchar(200),
 State varchar(50),
 StateCode varchar(2));
+
+-- Set the AUTO_INCREMENT value for the employeeID column
+ALTER TABLE Texasemployees.employees 
+AUTO_INCREMENT = 100;
+
+-- Add a primary key constraint to the employeeID column
+ALTER TABLE Texasemployees.employees 
+ADD PRIMARY KEY (employeeID);
+
+ALTER TABLE Texasemployees.employees
+DROP PRIMARY KEY;
 
 Insert into Texasemployees.employees(employeeID,
 LastName, FirstName, City, State, StateCode)
@@ -38,3 +51,19 @@ Values(
 (9, 'Evans', 'Mary', 'Houston', 'Texas', 'TX'),
 (10, 'Cruz', 'Roger', 'Houston', 'Texas', 'TX')
 ;
+
+Select *
+from Texasemployees.employees Join Texasemployees.Company
+on employees.employeeID = Company.employeeID
+where City='Houston';
+
+
+Insert into Texasemployees.employees(employeeID,
+LastName, FirstName, City, State, StateCode)
+Values(700, 'Lovely', 'Sandra', 'Houston', 'Texas', 'TX'),
+(100, 'Bradley', 'James', 'Dallas', 'Texas', 'TX');
+
+Delete from Texasemployees.employees where employeeID = 8 AND LastName = 'River';
+
+Select * 
+from Texasemployees.employees;
